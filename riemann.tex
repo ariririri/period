@@ -1,0 +1,63 @@
+\chapter{リーマン面の理論}
+\section{周期積分、ヤコビ多様体}
+実際にリーマン面の理論の後半を読み,周期の関連を見る.
+
+\subsection{位相幾何からの準備}
+議論をする上で最低限のホモトピー論,ホモロジー論を定義する.
+\begin{screen}
+\begin{dfn}
+ $X$上の2つの連続なpath $f,g: [0,1] \to X$に対し,連続写像$H:[0,1] \times [0,1] \to X$で
+ $H(0, \cdot) = f(\cdot), H(1, \cdot)$となるものが存在するす時,$f,g$は\textbf{ホモトピック}という.
+\end{dfn}
+\end{screen}
+
+\begin{screen}
+\begin{dfn}
+ $X$と$x \in X$に対して基点,つまり始点と終点が$x$となる連続なpath全体を$F$と表す.$\alpha, \beta \in F$に対して,
+ \begin{equation*}
+ \alpha \cdot \beta (t) = \begin{cases}
+    \alpha(2t) & ( t \le 1/2) \\
+    \beta(2t-1) & (t \ge 1/2)
+  \end{cases}
+ \end{equation*}
+とすると,これは積構造を定める.
+これをホモトピーによる同値関係で割ったものを\textbf{基本群}といい$\pi(X,x)$で表す.
+すぐ計算すればわかるように,基本群上でも上で定めた積構造がwell-definedであり,この演算について群になる.
+また,弧状連結である等,基点のとり方によらない場合は$\pi(X)$と表すこともある.
+\end{dfn}
+\end{screen}
+
+\begin{screen}
+\begin{dfn}
+ $A \subset X$に対し,$F(x, 0) = x , F(x, 1) \in A , F(a, 1) = a$となる写像$F$を変位レトラクトという.
+これは,$X$上の恒等写像と$A$へのレトラクション($A$への制限が恒等写像になるもの)の間のホモトピーの存在を意味する.
+この時,$id$とレトラクトはホモトピー同値になる.ただし$A$に写像が制限されていないので,ホモトピー同値はホモトピックと同値になる.
+\end{dfn}
+\end{screen}
+
+ホモロジー・コホモロジーについて定義する.
+具体的な話を書きすぎると死んでしまうが,
+
+\begin{itemize}
+\item 特異ホモロジー
+\item 単体ホモロジー
+\item 特異コホモロジー
+\item Kronecker積
+\end{itemize}
+について説明する.
+
+$\Delta^n := \{ x \in \mathbb{R}^{n+1} \mid  \sum x_i =1, \forall x_i \ge 0 \}$とする.
+$S_n(X) := \{f: \Delta^n \to X \mid f \mbox{は連続写像}\}$とし,
+$C_n(X) := \oplus_{f \in S_n(X)} \mathbb{Z}$とする.
+$i_j: \Delta_n \to \Delta_{n+1}$を第$j$成分を0にし,それ以降は一つずらしとする写像とする.
+$d: S_n(X) \to S_{n-1}(X), \sum_{j} f \mapsto (-1)^j f \circ i_j$とする.
+すると$d_n \circ d_{n+1} = 0$となり,
+
+\begin{screen}
+\begin{dfn}
+$\mathcal{U} =  \{U_i\}_{i \in I}$を$X$の開被覆とする. 任意の有限個の$i_1, \ldots ,i_k \in I$に対し$ \cap U_i$が可縮な時,$\mathcal{U}$を\textbf{単純被覆}という.
+$X$が$n$次元多様体であって,
+\end{dfn}
+\end{screen}
+
+\subsection{ポアンカレの補題とドラムの定理}

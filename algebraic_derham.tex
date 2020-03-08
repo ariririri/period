@@ -1,0 +1,276 @@
+\chapter{代数的DeRhamの定理}
+https://arxiv.org/pdf/1302.5834.pdf
+に基づきまとめる.
+層と層係数コホモロジーについてまとめ,またスペクトル系列を実際に計算しながら,層のコホモロジーを用いて,DeRhamの定理を示す.
+代数的な部分は時間があれば調べたい.
+
+この本の言いたいこと
+\begin{itemize}
+  \item 微分形式のなす層を定義し,それがfineであることを示す.
+  \item パラコンパクト位相空間上のfine sheafはacyclic
+  \item 二重複体のコホモロジーからacyclic resolutionの時のコホモロジーの同型を示す.
+  \item コホモロジーの同型とPoincareの補題から可微分多様体と複素多様体の場合のドラムの定理を示す.
+  \item GAGAと複素多様体の時のドラムの定理から射影代数多様体の場合にドラムの定理を示す.
+  \item チェックコホモロジーを使って代数多様体のドラムの定理を広い範囲に拡張している.
+\end{itemize}
+
+コホモロジーのNotaiton
+\begin{itemize}
+  \item $\mathcal{H}^k(A())$: 層のcomplexのk次のImage/Ker
+  \item $\mathfrak{h}^k(T(L))$: 層のcomplex$L$をアーベル群の完全関手で飛ばした先のコホモロジー.
+  \item $H^K(U,L)$: 層$L$のcomplexの$U$でのセクションのコホモロジー.
+  \item $\mathbb{H}^k(X, L)$: 二重複体(今回は$L$のGodement resolution)に対するTotalのコホモロジー
+\end{itemize}
+余力があればやりたいこと
+\begin{itemize}
+  \item $M$の特異コホモロジーと定数層のコホモロジーの(大域切断)一致
+\end{itemize}
+
+\begin{thm}
+\begin{equation*}
+H^n(X,\Omega_{alg}) = H^n(X_{an},\mathbb{C})
+\end{equation*}
+\end{thm}
+
+
+\section{層の定義と基本的な性質}
+層を定義する.
+\begin{dfn}
+$\mathcal{F}$が位相空間$X$上のアーベル群の前層$F$とは,
+開集合$U$に対し,アーベル群$F(U)$と$V \subset U$の時$\rho_{UV}:F(U) \to F(V)$準同型が与えられた時,
+\begin{itemize}
+  \item $\rho_{UU} = id_U$
+  \item $\rho_{UV} \circ \rho_{WU} = \rho_{WV}$
+\end{itemize}
+を満たすものである.さらに以下を満たす時$F$を\textbf{層}と呼ぶ.
+\begin{itemize}
+  \item $0 \to F(U) \to \prod F(U_i) \to \prod_{i,j}F(U_i \cup U_j)$がexact.
+\end{itemize}
+\end{dfn}
+
+初めてみる人にはこの定義は慣れないかもしれません.
+
+なので簡単な例を紹介しつつ,層の定義のイメージを見てみたいと思います.
+
+層の典型的な例は位相空間$X$に対し,$F(U)$を$U$から$\mathbb{R}$への連続関数全体です.
+
+これは層になります.
+この例を考えたときに気になる所は3つありました.
+\begin{itemize}
+  \item $X$から$\mathbb{R}$への連続関数全体さえわかれば、全て作れないのか?
+  \item 層の定義にある一意性や張り合わせの性質が何を意味するのか?
+\end{itemize}
+
+$X$から$\mathbb{R}$への連続関数全体さえわかれば、全て作れないのか?
+は簡単に作れないことがわかります.例えば$\tan x$は$\mathbb{R}$上全域では定義できないので,
+全体では発散してしまう関数を捉える操作になります
+
+
+層の定義にある一意性や張り合わせの性質が何を意味するのか?
+張り合わせはまさに定義の延長ですね.定義域の共通部分で一致している関数は全体に定義できるよねという話なので,非常に自然です.
+一意性は関数だと当たり前に感じるかもしれませんが,$f$と$g$を制限して一致しているなら,もともとでも一致しているという話です.
+抽象的な対象を関数に捉えようとするとなかなかうまくいきません.
+
+後で実際に層でない例を見ながら、こうした性質が成り立たないものを考えましょう.
+
+
+例えば$\tan x$
+
+それは複素関数では解析接続で定義域を拡張することがあります.
+しかし全ての関数がいくらでも解析接続ができるわけではありません.
+典型的には$\log x$が多価関数になりうまく接続できない場合があります.
+そうした関数は$X$上では存在しませんが,定義域を制限すると存在しえます.
+
+古典的には定義域全体で関数を考えればよかったため,定義域を一つ決めればよかったのですが,
+こうした状況では例えば開集合ごとに関数を定義した方が都合がよくなります.
+
+では開集合上で関数が定義されていれば,後は何でもいいのかというと違います.いくつか関係を持たせる必要があります.
+- 制限写像の存在.
+- 張り合わせできること.
+- 貼り合わせの一意性.
+
+圏論的に層を見直すと,層とは何だろうか?
+
+前層と層化
+
+
+\chapter{1/05発表}
+前回の準備をもとに代数的なドラムの定理を実際に証明する
+今回の話す内容は以下の通りである.
+\begin{itemize}
+    \item 前回の復習(定義と最低限の性質のみ)
+    \item スペクトル系列の定義と性質
+    \item 二重複体からスペクトル系列の作成方法
+    \item スペクトル系列を用いた実、複素の場合のドラムの定理の証明
+    \item 代数的なドラムの定理の証明.ただし、SerreのGAGAを前提にする.
+    \item ドラムの定理の一般の代数多様体への拡張
+    \item GAGAへの理解の向上.
+\end{itemize}
+
+\section{前回の復習}
+前回は層の定義と層係数コホモロジーの計算方法や性質を説明した.
+\begin{itemize}
+  \item Godement Resolutionの定義
+  \item Godement Resolutionのセクションを取る操作は完全関手である.
+  \item Flabby Sheafの定義
+  \item $\mathbb{R}$上の微分加群の層がFine Sheafであり、特にacyclic
+\end{itemize}
+
+
+\section{Spectral Sequence and double complex}
+\begin{dfn}
+$(E, F^pE, E^{p,q}_r, d_r^{p,q}:E_r^{p,q} \to E_r^{p+r, q-r+1})$がスペクトル系列とは
+\begin{itemize}
+  \item $F^pE$はfiniteなFiltration.すなわち,十分小さい$p^0$以下の全ての$p$に対し,$F^pE =E$,十分大きい$p_1$以上の全ての$p$に対し,$F^pE=0$.
+  \item $d \circ d = 0$
+  \item $\forall (p,q) \in \mathbb{Z}^2$,$\exists r_0 \in \mathbb{Z}_{\ge 1}$で$r \ge r_0$に対し,$d_r^{p,q} = d_r^{p-r, q+r-1} = 0$となる.
+  \item $\mathrm{Ker}d_r^{p,q}/ \mathrm{Im}d_r^{p-r,q+r-1} \simeq E_{r+1}^{p,q}$
+  \item $E^{p,q}_{\infty} = F^pE^{p+q}/F^{p+1}E^{p+q}$
+ただし,$E_{\infty}^{p,q}$は十分大きい$r$に対しては$E_r^{p,q}$が一致し、それを表す.
+\end{itemize}
+\end{dfn}
+
+特殊なスペクトル系列の場合の性質について示す.
+- $E_{\infty}^{p,q}$が単純な場合のlimit
+- $E_r$ termが単純な場合のlimit
+
+必要な範囲の証明に留める.
+
+今回は二重複体からスペクトル系列を構成するのが目標である.
+
+二重複体には$n$に対し,$a+b=n$となるものの中で$K^{a,b}\neq 0$となる$(a,b)$が有限という条件を課す.
+これに対して$E_1^{p,q}:= H^q(K^{p,q})$,$E^{p+q}:=H^{p+q},(Tot(K^{p+q}))$となるスペクトル系列を構成する.
+
+二重複体からスペクトル系列を構成する手順を説明する.
+
+前提となる道具の定義
+\begin{itemize}
+  \item 次数1の有限二重次数完全対
+  \item 導来対
+\end{itemize}
+メインの定理: 二重次数完全対からスペクトル系列が構築できる.
+応用:
+\begin{itemize}
+  \item フィルター付けされた複体から次数1の有限二重次数完全対の構築
+  \item 二重複体のToTからフィルター付けししたスペクトル系列の構築
+\end{itemize}
+
+\begin{dfn}
+アーベル群$D,E$に対し,$i:D \to D,j:D \to E, k:E \to D$が与えられとする.
+$(D,E,i,j,k)$が以下を満たす時 \textbf{完全対}という.
+\begin{itemize}
+  \item $\mathrm{Ker}j = \mathrm{Im}i$
+  \item $\mathrm{Ker}k = \mathrm{Im}j$
+  \item $\mathrm{Ker}i = \mathrm{Im}k$
+\end{itemize}
+\end{dfn}
+
+\begin{dfn}
+完全対$(D,E,i,j,k)$に対し,以下の操作で作った対を導来対という.
+\begin{itemize}
+    \item $D':=\mathrm{Im}i$
+    \item $E':=\mathrm{Ker}(j \circ k)/ \mathrm{Im}(j \circ k)$
+    \item $i'=i|_{D'}$
+    \item $j'(a):= \overline{j(b)}(i(b)=a)$
+    \item $k'(a + \mathrm{Im}(j \circ k )):= k(a)$
+\end{itemize}
+\end{dfn}
+
+\begin{prop}
+上の構成がwell-definedであり,完全対となる.
+\end{prop}
+\begin{proof}
+$E',j',k'$についてwell-defined性を示す.
+\begin{itemize}
+    \item $E'$: 
+$\mathrm{Ker}k = \mathrm{Im}j $より, $j \circ k\circ j \circ k = 0$となるので,$E'$はwell-defined.
+\item $j'$:
+$j(b) \in \mathrm{Ker}k$より$j(b) \in \mathrm{Ker}(j \circ k)$となる.
+さらに,$i(b)=i(b')=a$とすると,$b-b' \in \mathrm{Ker}i = \mathrm{Im} k$となり,$j(b-b') \in \mathrm{Im}(j \circ k)$となるので,well-defined.
+\item $k'$: $b \in \mathrm{Im}(j \circ k)$とすると,$K \circ j = 0$より言える.
+\end{itemize}
+完全性を示す.とり方から
+$j'\circ i' = 0, k' \circ j' =0, i' \circ k' = 0$はすぐわかる.
+$Im i' \subset Ker j'$
+
+\end{proof}
+
+
+$r$次導来対は上の構成を$r$回繰り返したものとして定義する.
+
+\begin{dfn}
+二重次数つき完全対とは
+\end{dfn}
+
+実際に層係数コホモロジーについて同型を示す
+
+\section{The Hypercohomology of a complex of sheaves}
+$X$上の層のcomplex $\mathcal{L}^{\bullet}$に対し,そのGodment Resolutionのなす二重複体を以下で定義する.
+\begin{equation*}
+K := \bigoplus_{p,q} K^{p,q} = \bigoplus_{p,q} \Gamma(X, C^p \mathcal{L}^q).
+\end{equation*}
+$\mathbb{H}(X, \mathcal{L})$をTotal Coplexの定めるCohomologyとする.
+
+今あり得るコホモロジーは
+様々な複体があるので,それらに対する表記を定める
+層の二重複体を
+\begin{itemize}
+    \item 層の複体が作る, コホモロジーの層$\mathcal{H}^p(\mathcal{L}^{\bullet})$
+    \item 層の大域切断が作る群の$p$次コホモロジー$H^p(X,L^n)$
+    \item 層のTotal Complexが作る群のコホモロジー$\mathbb{H}^p(X,L):= H(\oplus_{a+b=p} C^{a}L^{b})$
+    \item 層の複体の大域切断が誘導する群の複体から作るコホモロジー$h^p(\Gamma(X, \mathcal{L})$
+\end{itemize}
+これをいくつかの条件下でどういう関係にあるかを示す.
+
+
+Total Cohomologyは層のコホモロジーの拡張と捉えられる.
+
+$\mathcal{L}$に対し,$0 \to \mathcal{L} \to 0$という複体を考えると,
+$\mathbb{H}(X, \mathcal{L}):= h^k(\Gamma(X, C^{\bullet} F))$となる.
+
+目的はDeRhamの定理
+実の場合は微分加群の層はFineなのでAcyclicになる.
+
+ここで言いたいこと
+\begin{itemize}
+  \item Godement Resolutionの場合のコホモロジーの関係
+  \item 層の複体の間のQuasi isoを与えた場合にGlobal Sectionのコホモロジーがどうなるか?
+  \item Acyclicな層のcpxの場合のTotal Cohomologyどうなるか?
+  \item DeRhamの定理への応用
+\end{itemize}
+
+
+今この場合に二重複体の作るスペクトル系列$E^{p,q}_1, E^{p,q}_2, E^{n}, F^pE_n$について確認する.
+まず
+$K^{p,q}:=\Gamma(X, C^p \mathcal{L}^q)$となる.
+$E^{p,q}_1:= H^k(X, \mathcal{L}^{\bullet})$
+
+
+$\mathbb{C}$上の代数多様体(局所的には$\mathbb{C}[X_1,\dots,X_n]/(f_1, \ldots, f_m))$の作るAffine Schemeと同型)とした時,
+そこから,複素解析的な空間を作れる
+$X^a= \{ x \in \mathbb{C}^n \mid f_j(x) = 0 \}$
+$O^{X^{a}}$を$X^a$上の正則関数全体が作る層を$(f_1,, \ldots, f_m)$で割った層とする.
+
+$\mathbb{C}$上の代数多様体$X$から複素解析的な空間$X^a$を作る操作は関手的であり,これは連接層についても拡張できる.
+($X$上の連接層に対して,$X^{an}$の連接層を対応させられる)
+
+また射としては$\phi: X^{a} \to X$が取れるので、層同士の間にも射が誘導される.
+$\phi^* \mathcal{F} \sim \mathcal{F}^a$となり,
+$H^i(X, \mathcal{F}) \to H^i(X_h, \phi^* \mathcal{F})$が誘導される.
+これは$X$がsmooth projectiveの場合,同型になる.
+
+$\mathcal{F}$が代数的な微分形式の層だとすると,$\mathcal{F}^a$は解析的な微分形式の層になる.
+
+よって,
+代数的な微分形式のなす層の複体のGGodement Resolutionが作るGlobal Sectionの二重複体に対する,
+$E_1^{p,q}$は$H^P(X, \Omega_{alg}^q)$
+解析的な方は
+$E_1^{p,q}$は$H^P(X^a, \Omega_{an}^q)$となり,GAGAにより一致する.
+(本当はスペクトル系列が誘導する射の同型も必要だが)よって,コホモロジーが一致する.
+$$
+H^{*}\left(X_{\mathrm{an}}, \mathbb{\mathbb { C }}\right) \simeq
+\mathbb{H}^{*}\left(X_{\mathrm{an}}, \mathbb{C}^{\bullet}\right) \simeq
+\mathbb{H}^{*}\left(X_{\mathrm{an}}, \Omega_{\mathrm{an}}^{\bullet}\right) \simeq
+\mathbb{H}^{*} \left(X, \Omega_{\mathrm{alg}}^{\bullet}\right)
+$$
+よって言えた.

@@ -1,0 +1,88 @@
+\chapter{GAGA}
+\section{Analytic Spaces}
+
+\begin{screen}
+\begin{dfn}
+$U \subset \mathbb{C}^n$がanalytic spaceとは$\forall x \in U$に対し,ある$x$を含む$W \subset \mathbb{C}^n$上の正則関数$f_1, \ldots ,f_k$が存在し,
+\begin{equation*}
+  U \cup W = \{x \in W \mid f_1(x) = \ldots  f_k(x) = 0 \}
+\end{equation*}
+となること.
+\end{dfn}
+\end{screen}
+
+この時analytic spaceはlocally closedとなりまたlocally compactとなる.
+\begin{screen}
+\begin{dfn}
+位相空間$X$の部分集合$A$がlocally closedとは,以下の同値な条件を満たすことである.
+\begin{itemize}
+  \item あるopen set $U$と closed set $V$が存在し,$A = U \cup F$となること.
+  \item $x \in A$に対し,ある$X$の近傍$W$が存在し,$A \cup W$が$W$上closedであること
+
+\end{itemize}
+\end{dfn}
+\end{screen}
+
+これがら同値なことは少し議論すればよい。
+
+有界閉集合は$X$上
+
+$\mathcal{C}(\mathbb{C}^n)$を$\mathbb{C}$に値を取る連続関数のなす層とし,$\mathcal{H}$を$C^n$上の正則関数のなす層とする.
+
+\begin{rem}[疑問]
+$U \subset \mathbb{C}^n$上の正則関数のなす層を$\mathbb{C}^n$の連続関数のなす層から$U$上の連続関数のなす層への写像を使い定義している。
+これは通常定義される正則関数のなす層を一致しないのか?
+\end{rem}
+
+\begin{screen}
+\begin{dfn}
+ $U,V$をanalytic spaceとする.$\phi: U \to V$が\textbf{holomoprhic}とは以下を満たすことである.
+ \begin{itemize}
+   \item $\phi$は連続
+   \item $\mathcal{H}_{\phi(x), V} \to \mathcal{H}_{x, U}, f \mapsto f \circ \phi$がwell-definedであること.
+         つまり$f \circ \phi \in \mathcal{H}_{x, U}$となること.
+ \end{itemize}
+\end{dfn}
+\end{screen}
+
+\begin{rem}
+この定義は$U \to V$が通常の意味で正則であることと同値になるか?
+また,これは環つき空間としての射となっていることを意味する.
+特にlocal性は$m_{\phi(x)} = \{f \mid f(\phi(x))\}$より, これは $\phi*(m_{\phi(x)}) \subset m_{x}$となるので問題ない.
+\end{rem}
+
+analytic subsetやholomorphicは直積で保たれる.
+つまり$U, V$がanalyticなら$U \times V$はanalyticで$\phi, \phi'$がholomorphic$\phi \times \phi' : U \times U' \to V \times V'$はholomorphic.
+
+\chapter{The analytic space associated to an algebraci variety}
+最初に$\mathbb{C}$上のalgebraic varietyとregular mapを定義する.
+
+\begin{screen}
+\begin{dfn}
+有限生成$\mathbb{C}$代数$R$に対し,$(\mathrm{Spm}R, R)$を\textbf{アフィン代数多様体}といい、
+2つのアフィン代数多様体$(\mathrm{Spm}R, R)$と$(\mathrm{Spm}S, S)$に対して$\mathbb{C}$準同型写像$\psi: S \to R$と$\psi$から定まる写像$\psi^a: \mathrm{Spm}R \to \mathrm{Spm}S$が存在する時,
+$(\psi, \psi^a)$を(正則な)射という.
+\end{dfn}
+\end{screen}
+$I$を含む極大イデアル全体の集合を$V(I)$とすると,$V(I)$全体を閉集合とする位相が定まり,Zariski位相という.
+
+\begin{rem}
+  スキームと同様に$f \in R$に対し,$D_m(f):= R_f$とする層が定まりこれにより代数多様体も局所環つき空間として考えられる.
+\end{rem}
+
+これに付随するanalytic spaceが定義できる.
+代数多様体はlocalにはAffine代数多様体であり,その時$\mathrm{Spm}R$は$\mathbb{C}^n$のZariski閉集合に対応する.
+よってこれらにはanalytic spaceの構造が定まり,実は全体ではりあわせることができる.
+
+\begin{prop}
+There exists on $X$ a unique structure of an analytic space such
+ that, for every chart $\phi : V \to U$, the Z-open set $V$ is open, and $\phi$ is an analytic
+ isomorphism of V (equipped with the analytic structure induced by that of $X$)
+ onto $U$ (equipped with the analytic structure defined in $n^o 1$).
+\end{prop}
+
+\chapter{Thre correspondence between algebraic sheaves and coherent analytic sheaves}
+
+\section{The analytic sheaf associated to an albgeraic sheaf}
+$X$を$\mathbb{C}$上のalgberaic varietyとする.
+それに対し,$X^h$を$X$に付随するanalytic spaceとする.
