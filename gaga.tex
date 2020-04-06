@@ -1,37 +1,66 @@
 \chapter{GAGA}
-\section{Analytic Spaces}
+射影代数多様上の層とそのanalyticなものが定めるコホモロジーの一致や圏同値を示す.
+最初に代数多様体を定義し,次にanalytic spaceを定める.
+代数多様体の複素化を定義し,射影代数多様体の場合の関係について示す.
 
+
+\section{Analytic Spaces}
+最初にローカルな世界でanalyticを定義する.
 \begin{screen}
 \begin{dfn}
-$U \subset \mathbb{C}^n$がanalytic spaceとは$\forall x \in U$に対し,ある$x$を含む$W \subset \mathbb{C}^n$上の正則関数$f_1, \ldots ,f_k$が存在し,
+$U \subset \mathbb{C}^n$がanalyticとは$\forall x \in U$に対し,ある$x$を含む$W \subset \mathbb{C}^n$上の正則関数$f_1, \ldots ,f_k$が存在し,
 \begin{equation*}
-  U \cup W = \{x \in W \mid f_1(x) = \ldots  f_k(x) = 0 \}
+  U \cap W = \{x \in W \mid f_1(x) = \ldots  f_k(x) = 0 \}
 \end{equation*}
 となること.
 \end{dfn}
 \end{screen}
 
-この時analytic spaceはlocally closedとなりまたlocally compactとなる.
+こは複素多様体とは限らない.
+$U \cap W$上で$ \frac{\partial f_i}{\partial x_j}$のrankが$U$のとり方によらない時,複素多様体の閉部分多様体となる.
+
+$U$の位相を調べる.
+この時$U$はlocally closedとなりまたlocally compactとなる.
 \begin{screen}
 \begin{dfn}
 位相空間$X$の部分集合$A$がlocally closedとは,以下の同値な条件を満たすことである.
 \begin{itemize}
-  \item あるopen set $U$と closed set $V$が存在し,$A = U \cup F$となること.
-  \item $x \in A$に対し,ある$X$の近傍$W$が存在し,$A \cup W$が$W$上closedであること
-
+  \item あるopen set $U$と closed set $V$が存在し,$A = U \cap F$となること.
+  \item $x \in A$に対し,ある$X$の近傍$W$が存在し,$A \cap W$が$W$上closedであること
 \end{itemize}
 \end{dfn}
 \end{screen}
 
 これがら同値なことは少し議論すればよい。
 
-有界閉集合は$X$上
+GAGAでは層を以下で定義している.
+\begin{itemize}
+  \item 位相空間$X$
+  \item $x \in X$に対する関数$\mathcal{F}_x$
+  \item $\mathcal{F}$を$\mathcal{F}_x$のdisjoin unionとする(位相は何で定める?)
+\end{itemize}
+$\pi: \mathcal{F} \to X$を$f \in \mathcal{F}_x$の時$\pi(f)=x$とする.
+さらに
+\begin{itemize}
+  \item $f \in \mathcal{F}$に対し$f \in \mathcal{F}$の近傍と$x$の近傍が同相であるとする.
+  \item $f,g$に対し, $-f , f + g$がcontinuos(加法は$\pi(f) = \pi(g))$の時のみ.
+\end{itemize}
 
+これは開集合$U$に対し,そのsectionを対応させることにより,以前定義した層の定義と一致する(はず)
+
+
+\begin{rem}[疑問]
+$\mathcal{F}$の位相はどうやって定める
+\end{rem}
+
+$X$上$\mathbb{C}$への連続関数が作る層を$\mathcal{C}(X)$とする.
 $\mathcal{C}(\mathbb{C}^n)$を$\mathbb{C}$に値を取る連続関数のなす層とし,$\mathcal{H}$を$C^n$上の正則関数のなす層とする.
+
+
 
 \begin{rem}[疑問]
 $U \subset \mathbb{C}^n$上の正則関数のなす層を$\mathbb{C}^n$の連続関数のなす層から$U$上の連続関数のなす層への写像を使い定義している。
-これは通常定義される正則関数のなす層を一致しないのか?
+これは通常定義される正則関数のなす層を一致する.
 \end{rem}
 
 \begin{screen}
@@ -54,7 +83,8 @@ $U \subset \mathbb{C}^n$上の正則関数のなす層を$\mathbb{C}^n$の連続
 analytic subsetやholomorphicは直積で保たれる.
 つまり$U, V$がanalyticなら$U \times V$はanalyticで$\phi, \phi'$がholomorphic$\phi \times \phi' : U \times U' \to V \times V'$はholomorphic.
 
-\chapter{The analytic space associated to an algebraci variety}
+
+\section{The analytic space associated to an algebraci variety}
 最初に$\mathbb{C}$上のalgebraic varietyとregular mapを定義する.
 
 \begin{screen}
@@ -81,8 +111,92 @@ There exists on $X$ a unique structure of an analytic space such
  onto $U$ (equipped with the analytic structure defined in $n^o 1$).
 \end{prop}
 
-\chapter{Thre correspondence between algebraic sheaves and coherent analytic sheaves}
+\section{Thre correspondence between algebraic sheaves and coherent analytic sheaves}
 
 \section{The analytic sheaf associated to an albgeraic sheaf}
 $X$を$\mathbb{C}$上のalgberaic varietyとする.
 それに対し,$X^h$を$X$に付随するanalytic spaceとする.
+
+$O_x$加群の層ををalgebraic sheafといい,$M$をanalytic spaceとした時,$O_{M}$加群の層をanalytic sheafという.
+
+
+\section{Projective varieties. Statements of the theorems.}
+GAGAのmain theoremについて説明する
+
+$X$をprojective variety,ここでは$\mathbb{P}^r(\mathbb{C})$の閉部分多様体する.
+
+\begin{thm}
+$X$上のcoherent algeberaic sheaf $\mathcal{F}$に対し,
+\begin{equation*}
+ \epsilon: H^q(X, \mathcal{F}) \to H^q(X^h, \mathcal{F}^h)
+\end{equation*}
+はisomorphism
+\end{thm}
+
+\begin{thm}
+$\mathcal{F}, \mathcal{G}$を$X$上のcoherent algebraic shaefとする.この時,
+\begin{equation*}
+ \mathrm{Hom}(\mathcal{F}, \mathcal{G}) \sim \mathrm{Hom}(\mathcal{F}^h, \mathcal{G}^h)
+\end{equation*}
+\end{thm}
+
+\begin{thm}
+$X^h$上のcoherent analytic sheaf $\mathcal{M}$に対し,$X$上のalgberaic sheaf $\mathcal{F}$で$\mathcal{F}^h = \mathcal{M}$となるものが存在する
+\end{thm}
+
+これを一つずつ示す.
+
+\section{Proof of theorem 1}
+証明の前にいくつか補題を示す.
+
+\begin{lem}
+$X$上の層$\mathcal{F}$に対し,$X \subset Y$のとき,
+$Y$のopn set $U$に対し,$\mathcal{F}^e(U)$を
+\begin{equation*}
+  U \mapsto \begin{cases}
+    \mathcal{F}(U) & (if U \subset X) \\
+    0 & (otherwise)
+\end{cases}
+\end{equation*}
+で定める前層の層化とする.
+この時,
+\begin{equation*}
+\mathcal{F}^e_x =
+\begin{cases}
+    \mathcal{F}_x & (if x \in X) \\
+    0 & (otherwise)
+\end{cases}
+\end{equation*}
+となる.
+\end{lem}
+\begin{proof}
+前層のとり方から明らか.
+\end{proof}
+
+\begin{lem}
+この時,cohomologyは一致する.
+つまり,$X \subset Y$の時
+\begin{equation*}
+ H^q(X, \mathcal{F}) = H^q(Y, \mathcal{F}^e)
+\end{equation*}
+となる.
+\end{lem}
+\begin{proof}
+check cohomologyで考えるとよい.
+$Y$の任意のopen coverに対し,
+Fineな十分小さいOpen Cover$\mathcal{U} = \{U_i\}$を取ると
+$U_i \subset X$以外では$\mathcal{F}(U_i) = 0$としてよい.
+よって十分細かいopen coverに対し,
+$H(\{U_i \cap X\}, \mathcal{F}) = H(\mathcal{U}, Y)$となる.
+これより,inductive limitｗをとっても一致する.
+\end{proof}
+
+$X$でのコホモロジーと射影空間のコホモロジーが一致するので,射影空間で考える.
+射影空間の場合に
+構造層のコホモロジーが$0$を除き消えること
+analyticもdolebuの定理から消えることを示す.
+$O(n)$の場合は完全列を誘導し,inductionから示す.
+一般の場合はcoherent sheafであるため,$O(n)$の直積から全射があり,five term lemmaで示す.
+
+\section{Proof of theorem 2}
+層のflat性とテンソル積から言えそう.

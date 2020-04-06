@@ -1,0 +1,170 @@
+\section{層の議論}
+ここでは層と層の間の射について定義する.
+\begin{itemize}
+\item 層の層化側の定義
+\item 層の貼り合わせの条件
+\item 環つき空間の射
+\item $f:(X, O_X) \to (Y, O_Y)$から作れる層.
+\end{itemize}
+
+
+\subsection{層の定義}
+
+\begin{screen}
+\begin{dfn}
+ 任意の開集合$U \subset X$に対し,$\mathcal{F}(U)$が対応し,
+ $v \subset U$なら制限写像$|_V: \mathcal{F}(U) \to \mathcal{F}(V)$が存在し、以下を満たす時
+ $\mathcal{F}$を前層という.
+ \begin{itemize}
+   \item $F(\emptyset) = 0$
+   \item $|_U:F(U) \to F(U) = id$
+   \item $|_W \circ |_V = |_W$
+ \end{itemize}
+ 前層$\mathcal{F}$が任意の開集合$U$とその開被覆$\{U_i\}$に対し,以下を満たす時層という.
+ \begin{itemize}
+   \item $s \in F(U)$に対し,$s|_{U_i}=0$の時,$s=0$.
+   \item $s_i \in F(U_i)$に対し,$s_i|_{U_{ij}}= s_j|_{U_{ij}}$となる時,$s \in U$で$s|_{U_i} = s_i$となる.
+ \end{itemize}
+\end{dfn}
+\end{screen}
+
+
+\begin{epl}
+位相空間$\mathbb{C}$を考え,その開集合$U$に対し,
+\begin{equation*}
+F(U) := \{f:U \to \mathbb{C} \mid f \mbox{is continuous} \}
+\end{equation*}
+とする.$|_U$を定義域の制限で定める.この時$F$は層になる.
+\end{epl}
+
+\begin{lem}
+前層$\mathcal{F}$が層であることは
+任意の開集合$U$とその開被覆$\mathcal{U}$に対し,
+\begin{equation*}
+ 0 \to \mathcal{F}(U) \to \prod_{U_{\alpha} \in \mathcal{U}} \mathcal{F}(U_{\alpha})
+   \to \prod F(U_{\alpha} \cup U_{\beta})
+\end{equation*}
+がexact.
+\end{lem}
+\begin{proof}
+自明.ちゃんと証明を書く場合はまた今度.
+単射性は左側の完全性
+張り合わせは右側の全射性に対応
+\end{proof}
+
+前層$\mathcal{F}$に対し,
+\begin{equation*}
+    \mathcal{F}_x := \varinjlim_{x \in U}\mathcal{F}(U)
+\end{equation*}
+これを前層の茎(stalk)という.
+
+前層の層化を定義する
+\begin{screen}
+\begin{dfn}[層化]
+$X$上の前層$\mathcal{F}$に対し,
+\begin{equation*}
+\mathcal{G}(V)= \{ (s_x) \in \coprod_{x \in V} \mathcal{G}_x \mid \forall x, \exists U_x ,f  \in \mathcal{F}(U_x) \mbox{s.t. } \forall y \in U_x, s_y = f_y \}
+\end{equation*}
+で定めた層$\mathcal{G}$を層化という.
+\end{dfn}
+\end{screen}
+
+
+\begin{lem}
+上で定めた$\mathcal{G}$は層になる.
+\end{lem}
+\begin{proof}
+単射性を示す.
+開被覆$\{\mathcal{U_i}\}$に対し,$s|_{U_i} = 0$なら
+$s = (s_x)$とした時にすべての$s_x$に対し$0$となるので$s = 0$となる.
+張り合わせは$s_i|_j = s_j|_i$の時,$s = (s_x)$を$x \in U_i$に対しては$s_x =s_i|_x$とする.
+この時,$x \in U_{ij}$に対し,$s_i|_x = s_j|_x$となるので,$s$はwell-definedであり,$s|_{U_i} = s_i$となる.
+\end{proof}
+
+\begin{lem}
+自然な射$f: \mathcal{F} \to \mathcal{G}$とすると,$\forall x \in X$に対し,
+$\mathcal{F}_x \simeq \mathcal{G}_x$を誘導する.
+\end{lem}
+
+
+\begin{screen}
+\begin{dfn}
+$X$のOpen Base $\mathcal{B}$に対して層の性質を満たすものを,$\mathcal{B}$-sheafという.
+\end{dfn}
+\end{screen}
+
+\begin{lem}
+$\mathcal{B}$-shaef $\mathcal{F}$に対し,$X$上の層$\mathcal{G}$で$\forall U \in \mathcal{B}$に対し,$\mathcal{F}(U) = \mathcal{G}(U)$となるものが存在する.
+\end{lem}
+層化同様の方法で
+\begin{equation*}
+\mathcal{G}(V)= \{ (s_x) \in \prod \mathcal{G}_x \mid \forall x, \exists U_x ,f  \in \mathcal{F}(U_x) \mbox{s.t. } \forall y \in U_x, s_y = f_y \}
+\end{equation*}
+とすればこれは層になる.
+$\mathcal{F}(U) = \mathcal{G}(U)$はinductive limitのuniversalityからもわかるし,
+層化の構成で作ったものとの同型を層の性質からも直接示せる.
+$\mathcal{F}(U) \\mathcal{G}(U)$は$\{U_x \}$を取ることにより,開被覆となり,全射性がわかる.また単射性も層の性質からわかる.
+
+層の定義を満たす具体例を紹介する.
+層の典型的な例は位相空間$X$に対し,$F(U)$を$U$から$\mathbb{R}$への連続関数全体です.
+
+
+\begin{rem}
+ 上を用いるとある開被覆$\{U_i\}$と$U_i$上の層$\mathcal{F}_i$が存在し,$\mathcal{F}_i|_j = \mathcal{F}_j|_i$ならば
+ $X$上の層$\mathcal{F}$で$F|_i = \mathcal{F}_i$となるものが存在する
+ ($\{U_i\}$とその開部分集合はopen baseになるので)
+ なので,スキーム同士を張り合わせる場合は上の条件を満たせば問題ない.
+\end{rem}
+
+\subsection{層の射}
+$X$上の層の射の定義と射の全単射を定義する
+\begin{screen}
+\begin{dfn}
+$f: \mathcal{F} \to \mathcal{G}$とは
+
+\begin{tikzcd}
+  \mathcal{F}(U) \ar[r, "f_U"] \arrow[d, "|_V"'] & \mathcal{G}(U) \ar[d, "|_V"] \\
+  \mathcal{F}(V) \ar[r, "f_V"] & \mathcal{G}(V)
+\end{tikzcd}
+
+が可換となること
+\end{dfn}
+\end{screen}
+
+開被覆で定まる層があれば,それをもとに全体に張り合わせられる.
+
+\begin{screen}
+\begin{dfn}
+$X$上の層$f: \mathcal{F} \to \mathcal{G}$に対し,$\mathrm{Ker}f$を
+\begin{equation*}
+    U \to \mathrm{Ker} (f(U))
+\end{equation*}
+で定める層とし,$\mathrm{Im}f$を
+\begin{equation*}
+    U \to \mathrm{Im} (f(U))
+\end{equation*}
+の層化で定義する.
+
+\end{dfn}
+\end{screen}
+
+\subsection{層の射が誘導する層}
+位相空間の間の連続写像が誘導する層
+$f: X \to Y$に対し
+$X$上の層$\mathcal{F}$に対し,
+
+層の延長
+
+\subsection{環つき空間と射}
+
+環つき空間
+
+環つき空間の間の射
+\begin{screen}
+\begin{dfn}
+環$R$に対し,素イデアル全体のなす集合$\mathrm{Spec}R$に$D(f)$を開基とする位相をいれる.
+\end{dfn}
+\end{screen}
+
+スキームや代数多様体が環つき空間になっていること(これはRemark)
+

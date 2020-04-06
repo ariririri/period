@@ -1,0 +1,113 @@
+\section{Coherent sheaves on scheme}
+\subsection{sheaves of modules}
+
+\begin{screen}
+\begin{dfn}
+ $(X, O_X)$をringed spaceとする.$X$上のアーベル群の層$\mathcal{F}$が$O_X$-加群であるとは,
+ \begin{itemize}
+   \item $X$の任意のopen set $U$に対し,$F(U)$は$O_X(U)$加群となる.
+   \item $V \subset U$に対し,以下となる.
+
+   \begin{tikzpicture}[auto]
+   \node (a) at (0, 1.2) {$O_X(U) \times \mathcal{F}(U)$};
+   \node (x) at (2.4, 1.2) {$\mathcal{F}(U)$};
+   \node (b) at (0, 0) {$O_X(V) \times \mathcal{F}(V)$};
+   \node (y) at (2.4, 0) {$\mathcal{F}(V)$};
+   \draw[->] (a) to node {$\scriptstyle f$} (x);
+   \draw[->] (x) to node {$\scriptstyle p$} (y);
+   \draw[->] (a) to node[swap] {$\scriptstyle i$} (b);
+   \draw[->] (b) to node[swap] {$\scriptstyle g$} (y);
+   \end{tikzpicture}
+\end{itemize}
+\end{dfn}
+\end{screen}
+
+
+この時,$\mathcal{F},\mathcal{G}$のテンソル積,$\mathcal{F} \otimes_{O_X} \mathcal{G}$を
+$\mathcal{F} \otimes_{O_X} \mathcal{G}(U) := \mathcal{F}(U) \otimes_{O_X(U)} \mathcal{G}(U)$とする.
+これは層になる.
+また$(\mathcal{F} \otimes_{O_X} \mathcal{G})_x = \mathcal{F}_x \otimes_{O_X, x} \mathcal{G}_x$となる.
+これは\ref{tensor module}で示す.
+
+
+\begin{screen}
+\begin{dfn}
+$(X, O_X)$加群$\mathcal{F}$に対し,$\mathcal{F}$が$x \in X$でglobal sectionで生成されるとは,
+\begin{equation*}
+  O_{X,x} \otimes \mathcal{F}(X) \twoheadrightarrow \mathcal{F}_x
+\end{equation*}
+となること.
+$\forall x \in X$でglobal sectionで生成される時,$\mathcal{F}$はglobal sectionで生成されるという.
+$S \subset \mathcal{F}(X)$に対し,$\{s_x \mid s \in S\}$が$\mathcal{F}_x$を生成する時$S$で生成されるという.
+\end{dfn}
+\end{screen}
+
+\begin{lem}
+ $\mathcal{F}$がglobal sectionで生成されていることは$O_X^(I) \twoheadrightarrow \mathcal{F}$と同値.
+\end{lem}
+\begin{proof}
+$O_X^(I) \twoheadrightarrow \mathcal{F}$ならば$\mathcal{F}$がglobal sectionで生成されていることを示す.
+
+   \begin{tikzpicture}[auto]
+   \node (a) at (0, 1.2) {$O_{X,x} \otimes O_X^{(I)}(X) $};
+   \node (x) at (2.4, 1.2) {$O_{X,x} \otimes \mathcal{F}(X)$};
+   \node (b) at (0, 0) {$O_X^{(I)}(X)_x$};
+   \node (y) at (2.4, 0) {$\mathcal{F}_x $};
+   \draw[->] (a) to node {$\scriptstyle f$} (x);
+   \draw[->] (x) to node {$\scriptstyle p$} (y);
+   \draw[->] (a) to node[swap] {$\scriptstyle i$} (b);
+   \draw[->] (b) to node[swap] {$\scriptstyle g$} (y);
+   \end{tikzpicture}
+
+が成り立ち,$i$は$O_X^{(I)}$は$O_X$加群としてglobal sectionで生成されているので全射.
+また,$g$は仮定から全射となる.よって$p$は全射となる。
+逆を示す.
+$S$として$\mathcal{F}(X)$を取ることにより,必ず$\mathcal{F}$を生成する$S$が存在する.
+また,$e_s(s) = 1, e_s(t) = 0$となる元とし,
+$O_X^{S}(U) \to \mathcal{F}(U), \sum_{s \in S} a_s e_s \mapsto a_s s_U$とすれば,
+これは層の間の射となり,全射性も言える.
+\end{proof}
+
+
+\begin{screen}
+\begin{dfn}
+$(X, O_X)$加群の層$\mathcal{F}$が\textbf{quasi coherent shaef}とは$\forall x \in X$に対し,$x \in U$が存在し,
+\begin{equation*}
+  O_X^{(J)}|_U \to O_X^{(I)}|_U \to \mathcal{F}|_U
+\end{equation*}
+がexactとなることを言う.
+\end{dfn}
+\end{screen}
+
+\subsection{Quasi-Coherent Sheaves on an affine scheme}
+
+\subsection{Coherent sheaves}
+
+
+\begin{lem}
+\label{tensor module}
+$X$上の$O_X$加群$\mathcal{F},\mathcal{G}$のテンソル積,$\mathcal{F} \otimes_{O_X} \mathcal{G}$を
+$\mathcal{F} \otimes_{O_X} \mathcal{G}(U) := \mathcal{F}(U) \otimes_{O_X(U)} \mathcal{G}(U)$とすると層になる
+また$(\mathcal{F} \otimes_{O_X} \mathcal{G})_x = \mathcal{F}_x \otimes_{O_X, x} \mathcal{G}_x$となる.
+\end{lem}
+環つき空間をスキームの場合に限定して示す. 局所的なので、$X$をアフィンスキームと思って良い.
+
+\begin{lem}
+$S^{-1}N \otimes M \sim S^{-1}(N \otimes M)$
+\end{lem}
+真面目に元をおえば示せる.
+
+
+\begin{lem}
+$S^{-1}(N \otimes M) \sim S^{-1}N \otimes_{S^{-1}R} S^{-1}M$
+\end{lem}
+これは$S^{-1}N = N \otimes S^{-1}R$より
+\begin{equation*}
+  S^{-1}N \otimes_{S^{-1}R} S^{-1}M \sim N \otimes S^{-1}R \otimes_{S^{-1}R} S^{-1}M \sim N \otimes S^{-1}M \sim  S^{-1}(N \otimes M)
+\end{equation*}
+となる.
+
+これを使うことにより,スキームに対しては成り立つことがわかる.
+おそらく,一般の場合は上と近い形で
+$O(V) \otimes_{O(U)} M(U) \otimes N(V) \to M(V) \otimes N(V)$と
+$N(U) \otimes M(U) \to O(V) \otimes N(U) \otimes M(V)$とを使いながら,これのらindcutive limitが一致することを示せばよいはず。

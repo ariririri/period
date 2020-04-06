@@ -1,0 +1,38 @@
+\section{Projective Scheme}
+
+Projcetive Schemeの定義をする.
+GAGAの対象となる射影代数多様体は$\mathbb{P}^n_{\mathbb{C}}$のclosed subschemeである.
+
+\begin{dfn}
+$B$が次数つき$A$代数であるとは
+$B = \oplus B_n$とかけ,$B_n B_m \subset B_{n+m}$となること
+\end{dfn}
+
+
+
+\begin{lem}
+  $f \in B_+$をdegree $r$のhomogeneousな元とする.
+\begin{enumerate}
+  \item canonicalな射は$\theta: D_+(f) \to \mathrm{Spec}B_{(f)}$同相となる
+  \item $D_+(g) \subset D_+(f)$の時,$\alpha = g^r f^{- \mathrm{deg} g}$とする.
+  この時$\theta(D_+(g)) = D(\alpha)$
+  \item 自然な射$B_{(f)} \to B_{(g)}$は$(B_{(f)})_{\alpha} = B_{(g)}$をinduceする.
+  \item その他いろいろ
+\end{enumerate}
+\end{lem}
+1を示す.
+方針は以下の通り.
+\begin{itemize}
+  \item $\mathrm{Proj}B$が$\mathrm{Spec}B$の部分位相であることを示す.
+  \item 環の間の射を用いて自然な射を誘導し,連続であることを示す
+  \item 射が全射であることを示す
+  \item 射が単射であることを示す.
+  \item 開写像であることを示す.
+\end{itemize}
+
+\begin{screen}
+\begin{dfn}
+  $X_i:=\mathrm{Spec}A[T_iT_j^{-1}]$とすると$X_{ij} = X_{ji}$となるので,これを張り合わせたものを$A$のProjective Spaceといい$\mathbb{P^n}_A$で表す.
+  Projective Spaceのclosed subschemeをProjective Schemeという.
+\end{dfn}
+\end{screen}
