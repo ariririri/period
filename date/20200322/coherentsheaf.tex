@@ -24,8 +24,10 @@
 
 
 この時,$\mathcal{F},\mathcal{G}$のテンソル積,$\mathcal{F} \otimes_{O_X} \mathcal{G}$を
-$\mathcal{F} \otimes_{O_X} \mathcal{G}(U) := \mathcal{F}(U) \otimes_{O_X(U)} \mathcal{G}(U)$とする.
-これは層になる.
+\begin{equation*}
+U \mapsto \mathcal{F}(U) \otimes_{O_X(U)} \mathcal{G}(U)
+\end{equation*}
+の層化したものを$\mathcal{F} \otimes_{O_X} \mathcal{G}$で表す.
 また$(\mathcal{F} \otimes_{O_X} \mathcal{G})_x = \mathcal{F}_x \otimes_{O_X, x} \mathcal{G}_x$となる.
 これは\ref{tensor module}で示す.
 
@@ -43,10 +45,10 @@ $S \subset \mathcal{F}(X)$に対し,$\{s_x \mid s \in S\}$が$\mathcal{F}_x$を�
 \end{screen}
 
 \begin{lem}
- $\mathcal{F}$がglobal sectionで生成されていることは$O_X^(I) \twoheadrightarrow \mathcal{F}$と同値.
+ $\mathcal{F}$がglobal sectionで生成されていることと$O_X^{(I)} \twoheadrightarrow \mathcal{F}$と同値.
 \end{lem}
 \begin{proof}
-$O_X^(I) \twoheadrightarrow \mathcal{F}$ならば$\mathcal{F}$がglobal sectionで生成されていることを示す.
+$O_X^{(I)} \twoheadrightarrow \mathcal{F}$ならば$\mathcal{F}$がglobal sectionで生成されていることを示す.
 
    \begin{tikzpicture}[auto]
    \node (a) at (0, 1.2) {$O_{X,x} \otimes O_X^{(I)}(X) $};
@@ -60,10 +62,10 @@ $O_X^(I) \twoheadrightarrow \mathcal{F}$ならば$\mathcal{F}$がglobal section�
    \end{tikzpicture}
 
 が成り立ち,$i$は$O_X^{(I)}$は$O_X$加群としてglobal sectionで生成されているので全射.
-また,$g$は仮定から全射となる.よって$p$は全射となる。
-逆を示す.
-$S$として$\mathcal{F}(X)$を取ることにより,必ず$\mathcal{F}$を生成する$S$が存在する.
-また,$e_s(s) = 1, e_s(t) = 0$となる元とし,
+また,$g$は仮定から全射となる.よって$p$は全射となるので,global sectionで生成されている.
+
+逆を示す.$S$として$\mathcal{F}(X)$を取ることにより,必ず$\mathcal{F}$を生成する$S$が存在する.
+また,$e_s \in O_X^S(U)$を$e_s(s) = 1, e_s(t) = 0$となる元とし,
 $O_X^{S}(U) \to \mathcal{F}(U), \sum_{s \in S} a_s e_s \mapsto a_s s_U$とすれば,
 これは層の間の射となり,全射性も言える.
 \end{proof}
@@ -80,7 +82,42 @@ $(X, O_X)$加群の層$\mathcal{F}$が\textbf{quasi coherent shaef}とは$\foral
 \end{screen}
 
 \subsection{Quasi-Coherent Sheaves on an affine scheme}
+$X = \mathrm{Spec}A$の時にquasi-coherent sheafを構成する.
+$M$を$A$-modする.
+$\tilde{M}$という$O_x$-加群を構成する.
+\begin{equation*}
+\tilde{M}(D(f)) := M_f = M \otimes_A A_f
+\end{equation*}
+とする.
+$D(g) \subset D(f)$の時,$V(g) \supset V(f)$なので,
+$\cup_{f \in p}p  = \sqrt{(f)} \ni g$となる.よって$g^n = fb$とかける.これより
 
+\begin{alignat*}{2}
+ A_f & \to &  \ A_g \\
+ \frac{a}{f^m} & \mapsto & \ \frac{b^ma}{g^{mn}}
+\end{alignat*}
+
+が定まり,それの誘導する射
+
+\begin{alignat*}{2}
+ M_f & \to &  \ M_g \\
+ \frac{x}{f^m} & \mapsto & \ \frac{b^m x}{g^{mn}}
+\end{alignat*}
+
+が定義される.
+この時$\{D(f)\}$上で$\tilde{M}$が$\mathcal{B}$-sheafになることを示す.
+\begin{align*}
+  & X = \cup D(f_i) \\
+\Leftrightarrow & X = D \left(\sum (f_i) \right) \\
+\Leftrightarrow & V \left(\sum (f_i) \right) = \emptyset
+\end{align*}
+この時,$\sum f_i = (1)$より,$\sum a_i f_i = 1$とかける.
+よって$a_i$が$0$でない$f_i$を使い,$X = \cup_{i=1}^n D(f_i)$とかける.
+
+$X$のfinite open coveringについて,$X$について層の定義を満たすことを示せば十分である.
+$X$についての条件を満たせれば,$X=D(f)$の時について示せる,それは$D(f) \cup D(f_i)$がAffineになるので,$D(f)$というスキームのfinte open coveringについて示せる.
+また,finite open coverの時に言えれば,compactなのでopen coverに対し,affin finte open coverが取れ、そこ上で成り立つことを示せばよい。
+特に
 \subsection{Coherent sheaves}
 
 
